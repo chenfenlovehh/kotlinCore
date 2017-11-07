@@ -4,9 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.multidex.MultiDex
+import com.facebook.stetho.Stetho
 import com.jinghan.app.global.Constant
 import com.jinghan.core.dependencies.dragger2.component.DaggerAppComponent
 import com.orhanobut.logger.*
+import com.squareup.leakcanary.LeakCanary
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import java.util.*
@@ -40,8 +42,21 @@ class AppContext : DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
 
+        LeakCanary.install(this)
+        initStetho()
         initLogger(BuildConfig.DEBUG)
         registerLifecycle()
+    }
+
+    /**
+     * 初始化stetho
+     */
+    private fun initStetho() {
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                        .build())
     }
 
     /**突破65535限制*/
