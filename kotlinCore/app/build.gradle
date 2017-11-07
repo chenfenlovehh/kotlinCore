@@ -1,0 +1,156 @@
+import com.jh.plugin.AspectjPlugin
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    signingConfigs {
+        debug {
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file('local.properties').newDataInputStream())
+            def sdkDir = properties.getProperty('signing.release.key')
+
+            storeFile file(sdkDir)
+            storePassword properties.getProperty('storePassword')
+            keyAlias properties.getProperty('keyAlias')
+            keyPassword properties.getProperty('keyPassword')
+            v2SigningEnabled true
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "hanhan_${variant.productFlavors[0].dimension}-${variant.name}-${variant.versionName}.apk"
+                }
+            }
+        }
+        release {
+            //*
+            Properties properties = new Properties()
+            properties.load(project.rootProject.file('local.properties').newDataInputStream())
+            def sdkDir = properties.getProperty('signing.release.key')
+
+            storeFile file(sdkDir)
+            storePassword properties.getProperty('storePassword')
+            keyAlias properties.getProperty('keyAlias')
+            keyPassword properties.getProperty('keyPassword')
+            v2SigningEnabled false
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "hanhan_${variant.productFlavors[0].dimension}-${variant.name}-${variant.versionName}.apk"
+                }
+            }
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        applicationId "com.hanhan.frame"
+        versionCode 1
+        versionName "1.0.0"
+
+        ndk{
+            abiFilters 'armeabi-v7a'
+        }
+
+        // dex突破65535的限制
+        multiDexEnabled true
+
+        /*vector支持*/
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    flavorDimensions "app"
+
+    productFlavors {
+        dev {
+            dimension = "app"
+        }
+
+        production {
+            dimension = "app"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+        debug {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        }
+    }
+
+    /*sourceSets {
+        dev {
+            java.srcDirs = ['src/dev/java', 'src/dev/java/']
+        }
+        production {
+            java.srcDirs = ['src/production/java', 'src/production/java/']
+        }
+        main { res.srcDirs = ['src/main/res', 'src/main/res/drawable-xhdpi'] }
+    }*/
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    def dep = rootProject.ext.dependencies;
+
+    implementation dep.supportAppCompat
+
+    kapt dep.daggerCompiler
+    compileOnly dep.javaxAnnotation
+    implementation dep.dagger
+    implementation dep.daggerAndroid
+    implementation dep.daggerAndroidSupport
+    kapt dep.daggerAndroidProcessor
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    kapt "com.android.databinding:compiler:$android_plugin_version"
+
+    implementation dep.logger
+
+    implementation dep.okhttp3
+    implementation dep.okhttpLoggingInterceptor
+    implementation dep.retrofit
+    implementation dep.retrofitGsonConverter
+    implementation dep.rxJava
+    implementation dep.retrofitRxjava2Adapter
+    implementation dep.rxAndroid
+    implementation dep.rxlifecycle
+    implementation dep.rxlifecycleAndroid
+    implementation dep.rxlifecycleComponents
+
+    implementation dep.stetho
+    implementation dep.stethoOkHttp
+
+    implementation dep.glide
+    implementation dep.glideOkhttp
+
+    implementation dep.multidex
+
+}
+
+apply plugin: AspectjPlugin

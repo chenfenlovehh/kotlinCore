@@ -1,0 +1,15 @@
+AOPPLUGIN
+    实现android aop编程，plugin在编译期用来自动生成代码。
+    注意：插件修改后运行前需要重新发布: ./gradlew -p AopPlugin clean build uploadArchives --info
+
+热修复andfix技术
+    apkpatch.bat -f andfix_v2.0.apk -t andfix_v1.0.apk -o output -k AndFixKey.jks -p andfix -a andfix -e andfix
+    例：apkpatch.bat -f 新apk -t 旧apk -o 输出目录 -k app签名文件 -p 签名文件密码 -a 签名文件别名 -e 别名密码
+
+    -f <new.apk> ：新apk
+    -t <old.apk> : 旧apk
+    -o <output> ： 输出目录（补丁文件的存放目录）
+    -k <keystore>： 打包所用的keystore
+    -p <password>： keystore的密码
+    -a <alias>： keystore 用户别名
+    -e <alias password>： keystore 用户别名密码
