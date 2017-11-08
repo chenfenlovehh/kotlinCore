@@ -7,12 +7,10 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.annotation.CheckResult
-import android.support.v4.app.Fragment
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.jinghan.core.mvp.view.activity.BaseActivity
 import com.jinghan.core.mvp.view.impl.view.BaseView
 import com.trello.rxlifecycle2.LifecycleProvider
@@ -20,6 +18,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer
 import com.trello.rxlifecycle2.RxLifecycle
 import com.trello.rxlifecycle2.android.FragmentEvent
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid
+import dagger.android.support.DaggerFragment
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 
@@ -28,7 +27,7 @@ import io.reactivex.subjects.BehaviorSubject
  * @time 2017/11/7    下午6:18
  * @mail lzr319@163.com
  */
-abstract class BaseFragment<B:ViewDataBinding> : Fragment(), LifecycleProvider<FragmentEvent>, BaseView{
+abstract class BaseFragment<B:ViewDataBinding> : DaggerFragment(), LifecycleProvider<FragmentEvent>, BaseView{
     private val lifecycleSubject = BehaviorSubject.create<FragmentEvent>()
 
     protected lateinit var binding:B
