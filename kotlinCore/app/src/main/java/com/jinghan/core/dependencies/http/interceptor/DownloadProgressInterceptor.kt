@@ -19,9 +19,12 @@ class DownloadProgressInterceptor(private val listener: DownloadProgressListener
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalResponse = chain.proceed(chain.request())
+        var body: ResponseBody? = originalResponse.body()
+
+        if(null == body) return originalResponse
 
         return originalResponse.newBuilder()
-                .body(DownloadProgressResponseBody(originalResponse.body()))
+                .body(DownloadProgressResponseBody(body))
                 .build()
     }
 

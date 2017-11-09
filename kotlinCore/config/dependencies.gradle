@@ -14,6 +14,7 @@ ext{
     rxlifecycle2Version = "2.2.0"
 
     okhttpVersion = "3.3.0"
+    okhttpLogVersion = "3.8.1"
     daggerVersion = "2.11"
     kotlinVersion = "1.1.2-2"
     logVersion = '2.1.1'
@@ -33,7 +34,7 @@ ext{
 
             // okHttp
             okhttp3                 : "com.squareup.okhttp3:okhttp:$okhttpVersion",
-            okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
+            okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttpLogVersion",
 
             rxlifecycle             : "com.trello.rxlifecycle2:rxlifecycle:$rxlifecycle2Version",
             rxlifecycleAndroid      : "com.trello.rxlifecycle2:rxlifecycle-android:$rxlifecycle2Version",

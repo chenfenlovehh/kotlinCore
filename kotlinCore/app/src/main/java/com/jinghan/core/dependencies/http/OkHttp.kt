@@ -47,7 +47,7 @@ class OkHttp @Inject constructor(context : Context){
     init {
         val loggingInterceptor = HttpLoggingInterceptor{
             message -> Logger.i(message)
-        }
+        }.setLevel(HttpLoggingInterceptor.Level.BODY)
 
         val builder = OkHttpClient.Builder().addInterceptor(loggingInterceptor)
                 .connectTimeout(Constant.HttpInfo.CONNETC_TIMEOUT,TimeUnit.SECONDS)

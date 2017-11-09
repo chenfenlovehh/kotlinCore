@@ -9,6 +9,7 @@ import android.support.annotation.CheckResult
 import android.support.v7.app.AppCompatDelegate
 import android.text.TextUtils
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import com.jinghan.core.helper.PermissionUtils
@@ -129,6 +130,13 @@ abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity(),Lif
             val localLayoutParams = window.attributes
             localLayoutParams.flags = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS or localLayoutParams.flags
         }
+    }
+
+    /**全屏*/
+    protected fun fullScreen(){
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
     }
 
     override fun showLoading() {

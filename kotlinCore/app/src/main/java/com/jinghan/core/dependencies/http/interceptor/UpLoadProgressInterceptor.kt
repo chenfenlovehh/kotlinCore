@@ -19,13 +19,13 @@ class UpLoadProgressInterceptor(private val mUploadListener: UploadProgressListe
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
-        if (null == request.body()) {
-            return chain.proceed(request)
-        }
+        var body: RequestBody? = request.body()
+
+        if(null == body) return chain.proceed(request)
 
         val build = request.newBuilder()
                 .method(request.method(),
-                        UploadProgressRequestBody(request.body()))
+                        UploadProgressRequestBody(body))
                 .build()
         return chain.proceed(build)
     }

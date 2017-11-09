@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.multidex.MultiDex
 import com.facebook.stetho.Stetho
 import com.jinghan.app.global.Constant
+import com.jinghan.core.BuildConfig
 import com.jinghan.core.dependencies.dragger2.component.DaggerAppComponent
 import com.orhanobut.logger.*
 import com.squareup.leakcanary.LeakCanary
@@ -100,12 +101,12 @@ class AppContext : DaggerApplication() {
      * @param allowLog true记录日志
      * */
     private fun initLogger(allowLog:Boolean){
-        Logger.clearLogAdapters();
+        Logger.clearLogAdapters()
 
         if(!allowLog){
             Logger.addLogAdapter(object : AndroidLogAdapter(){
                 override fun isLoggable(priority: Int, tag: String?): Boolean {
-                    return false;
+                    return false
                 }
             })
         }else{
