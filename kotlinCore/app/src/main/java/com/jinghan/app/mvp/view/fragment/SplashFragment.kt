@@ -1,5 +1,8 @@
 package com.jinghan.app.mvp.view.fragment
 
+import com.jinghan.app.mvp.model.bean.SplashInfo
+import com.jinghan.app.mvp.presenter.ISplashFragmentPresenter
+import com.jinghan.app.mvp.view.impl.view.ISplashFragmentView
 import com.jinghan.core.R
 import com.jinghan.core.databinding.FgSplashBinding
 import com.jinghan.core.dependencies.dragger2.scope.ActivityScoped
@@ -13,11 +16,30 @@ import javax.inject.Inject
  */
 @ActivityScoped
 class SplashFragment @Inject
-constructor() : BaseFragment<FgSplashBinding>() {
+constructor() : BaseFragment<FgSplashBinding>(),ISplashFragmentView {
+
+    @Inject
+    protected lateinit var presenter : ISplashFragmentPresenter
+
     override val layoutId: Int
         get() = R.layout.fg_splash
 
-    override fun initData() {}
+    override fun initData() {
+        presenter.reqSplashInfo()
+        binding.btnRetry.setOnClickListener({initData()})
 
-    override fun initPresenter() {}
+    }
+
+    override fun initPresenter() {
+        presenter.takeView(this)
+        presenter.lifecycle(lifecycleSubject)
+    }
+
+    override fun updateSplash(splashInfo: SplashInfo?) {
+        presenter.interval(binding.viewContainer,binding.viewProgress,binding.pbCircle,binding.tvProgress,splashInfo)
+    }
+
+    override fun toMain() {
+
+    }
 }

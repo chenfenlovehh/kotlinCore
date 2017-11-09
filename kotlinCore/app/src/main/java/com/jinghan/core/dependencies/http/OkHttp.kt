@@ -20,12 +20,14 @@ import java.io.File
 import java.lang.RuntimeException
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * @author liuzeren
  * @time 2017/11/3    上午11:32
  * @mail lzr319@163.com
  */
+@Singleton
 class OkHttp @Inject constructor(context : Context){
 
     companion object {
@@ -86,7 +88,7 @@ class OkHttp @Inject constructor(context : Context){
             return this
         }
 
-        fun <T> builder(service:Class<T>):T?{
+        fun <T> builder(service:Class<T>):T{
             if (baseUrl == null) {
                 throw RuntimeException("baseUrl is null!")
             }

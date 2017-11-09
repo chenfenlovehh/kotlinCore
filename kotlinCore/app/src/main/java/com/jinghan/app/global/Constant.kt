@@ -36,7 +36,7 @@ object Constant{
          * 请求根域名
          * baseUlr 必须以 /（斜线） 结束
          */
-        val BASE_URL = ""
+        val BASE_URL = "http://game.migufun.com/gateway/"
 
         /**
          * HTTPS证书名称
@@ -107,7 +107,7 @@ object Constant{
         /**
          * 日志的tag标志
          */
-        val LOG_TAG = "mvvm_dev"
+        val LOG_TAG = "kotlinApp"
 
         /**
          * 日志信息是否保存在本地

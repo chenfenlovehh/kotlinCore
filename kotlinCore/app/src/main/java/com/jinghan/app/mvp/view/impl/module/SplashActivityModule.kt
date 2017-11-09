@@ -1,7 +1,9 @@
 package com.jinghan.app.mvp.view.impl.module
 
 import com.jinghan.app.mvp.presenter.ISplashActivityPresenter
+import com.jinghan.app.mvp.presenter.ISplashFragmentPresenter
 import com.jinghan.app.mvp.presenter.impl.SplashActivityPresenter
+import com.jinghan.app.mvp.presenter.impl.SplashFragmentPresenter
 import com.jinghan.app.mvp.view.fragment.GuideFragment
 import com.jinghan.app.mvp.view.fragment.SplashFragment
 import com.jinghan.core.dependencies.dragger2.scope.ActivityScoped
@@ -29,5 +31,9 @@ abstract class SplashActivityModule{
     @ActivityScoped
     @Binds
     internal abstract fun splashActivityPresenter(presenter: SplashActivityPresenter):ISplashActivityPresenter
+
+    @ActivityScoped
+    @Binds
+    internal abstract fun splashFragmentPresenter(presenter: SplashFragmentPresenter): ISplashFragmentPresenter
 
 }

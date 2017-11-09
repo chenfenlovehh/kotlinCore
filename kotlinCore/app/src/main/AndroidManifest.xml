@@ -22,12 +22,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.jinghan.app.mvp.view.activity.HomeActivity"/>
+
         <!--glide 配置信息 start-->
 
         <!--okhttp3与glide桥接-->
-        <meta-data
+        <!--<meta-data
             android:name="com.bumptech.glide.integration.okhttp.OkHttpGlideModule"
-            android:value="GlideModule" />
+            android:value="GlideModule" />-->
 
         <!--glide 图片缓存信息-->
         <meta-data android:name="com.jinghan.core.dependencies.glide.CacheGlideModule"

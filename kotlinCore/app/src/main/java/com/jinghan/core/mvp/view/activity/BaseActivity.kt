@@ -39,8 +39,8 @@ abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity(),Lif
         lifecycleSubject.onNext(ActivityEvent.CREATE)
         initContentView()
         initPresenter()
-        initToolbar()
         initViewsAndListener()
+        initToolbar()
         initData()
     }
 
@@ -60,8 +60,7 @@ abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity(),Lif
     }
 
     private fun initContentView(){
-        val rootView = layoutInflater.inflate(layoutId,null,false)
-        mViewBinding = DataBindingUtil.bind<B>(rootView)
+        mViewBinding = DataBindingUtil.setContentView<B>(this,layoutId)
     }
 
     protected abstract val layoutId:Int

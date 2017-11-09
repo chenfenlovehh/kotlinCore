@@ -28,7 +28,7 @@ import io.reactivex.subjects.BehaviorSubject
  * @mail lzr319@163.com
  */
 abstract class BaseFragment<B:ViewDataBinding> : DaggerFragment(), LifecycleProvider<FragmentEvent>, BaseView{
-    private val lifecycleSubject = BehaviorSubject.create<FragmentEvent>()
+    protected val lifecycleSubject = BehaviorSubject.create<FragmentEvent>()
 
     protected lateinit var binding:B
 

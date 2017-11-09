@@ -56,6 +56,28 @@ class HeaderInterceptor(private val mContext:Context) : Interceptor{
             builder.addHeader("cookieHash", "")
         }*/
 
+        builder.addHeader("user_id", "0")//user_id
+        builder.addHeader("tel", "")//手机号
+        builder.addHeader("user_token", "")
+        builder.addHeader("passid", "")
+
+        builder.addHeader("user_type", "2")//第三方账号：1 游客：2 手机登录3
+
+        builder.addHeader("cookie", "")//cookie
+        builder.addHeader("cookieHash", "")
+
+
+
+
+
+
+
+
+
+
+
+
+
         builder.addHeader("imei", AndroidUtils.getDeviceId(mContext))//imei 号
 
         builder.addHeader("imsi", AndroidUtils.getIMSI(mContext))//imsi 号

@@ -1,4 +1,4 @@
-package com.jh.plugin;
+package com.jh.plugin
 
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler

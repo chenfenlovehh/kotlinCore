@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KotlinCore</string>
+
+    <string name="skip_progress">跳过\n%ds</string>
 </resources>

@@ -1,12 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:id="@+id/viewContainer"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
+
+        <FrameLayout
+            android:id="@+id/viewProgress"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
+            <com.jinghan.core.mvp.widget.CircleProgressBar
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/pbCircle"
+                app:style="solid_line"
+                app:progress_stroke_width="4dp"
+                app:line_width="4dp"
+                app:line_count="30"
+                app:progress_stroke_cap="round"
+                app:progress_shader="sweep"
+                app:draw_progress_text="false"
+                app:progress_background_color="#afafaf"
+                app:progress_start_color="#666"
+                app:progress_end_color="#666"
+                app:progress_text_color="#aaa"
+                app:background_color="#ccc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:text="@string/skip_progress"
+                tool:text="跳过"/>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btnRetry"
+            android:text="retry"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="这是欢迎页"
-            android:textSize="12sp"/>
-    </LinearLayout>
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 </layout>

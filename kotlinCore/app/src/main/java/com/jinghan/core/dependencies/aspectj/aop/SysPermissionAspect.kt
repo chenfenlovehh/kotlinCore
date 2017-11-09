@@ -24,7 +24,8 @@ class SysPermissionAspect {
         PermissionUtils.requestPermissionsResult(ac, 1,permission.value, object : PermissionUtils.OnPermissionListener {
             override fun onPermissionGranted() {
                 //权限申请成功，执行原方法
-                joinPoint.proceed()
+                if(permission.isCallback)
+                    joinPoint.proceed()
             }
 
             override fun onPermissionDenied() {

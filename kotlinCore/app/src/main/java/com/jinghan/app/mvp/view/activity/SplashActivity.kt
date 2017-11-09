@@ -1,7 +1,6 @@
 package com.jinghan.app.mvp.view.activity
 
 import android.Manifest
-import android.support.v4.app.Fragment
 import com.jinghan.app.mvp.presenter.ISplashActivityPresenter
 import com.jinghan.app.mvp.view.fragment.GuideFragment
 import com.jinghan.app.mvp.view.fragment.SplashFragment
@@ -26,7 +25,7 @@ class SplashActivity(override val layoutId: Int = R.layout.aty_splash) : BaseAct
 
     @Inject lateinit var presenter:ISplashActivityPresenter
 
-    @Permission(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    @Permission(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,isCallback = false)
     override fun initViewsAndListener() {
     }
 
@@ -42,14 +41,16 @@ class SplashActivity(override val layoutId: Int = R.layout.aty_splash) : BaseAct
     }
 
     private fun applyFragment(isFirstRun:Boolean){
-        var fragment : Fragment
+        var fragment = supportFragmentManager.findFragmentById(R.id.fl_container)
 
-        if(isFirstRun)
-            fragment = guideFragment.get()
-        else
-            fragment = splashFragment.get()
+        if(null == fragment){
+            if(isFirstRun)
+                fragment = guideFragment.get()
+            else
+                fragment = splashFragment.get()
+        }
 
-        AndroidUtils.addFragmentToActivity(supportFragmentManager,fragment,R.id.flContainer)
+        AndroidUtils.addFragmentToActivity(supportFragmentManager,fragment,R.id.fl_container)
     }
 
     override fun onDestroy() {
