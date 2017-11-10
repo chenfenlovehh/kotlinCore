@@ -910,6 +910,8 @@ object AndroidUtils {
      */
     fun addFragmentToActivity(fragmentManager: FragmentManager,
                               fragment: Fragment, frameId: Int) {
+        if(fragment.isAdded) return
+
         val transaction = fragmentManager.beginTransaction()
         transaction.add(frameId, fragment)
         transaction.commit()

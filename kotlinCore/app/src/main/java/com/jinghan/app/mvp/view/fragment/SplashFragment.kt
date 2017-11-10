@@ -1,7 +1,9 @@
 package com.jinghan.app.mvp.view.fragment
 
+import android.content.Intent
 import com.jinghan.app.mvp.model.bean.SplashInfo
 import com.jinghan.app.mvp.presenter.ISplashFragmentPresenter
+import com.jinghan.app.mvp.view.activity.HomeActivity
 import com.jinghan.app.mvp.view.impl.view.ISplashFragmentView
 import com.jinghan.core.R
 import com.jinghan.core.databinding.FgSplashBinding
@@ -26,7 +28,6 @@ constructor() : BaseFragment<FgSplashBinding>(),ISplashFragmentView {
 
     override fun initData() {
         presenter.reqSplashInfo()
-        binding.btnRetry.setOnClickListener({initData()})
 
     }
 
@@ -40,6 +41,8 @@ constructor() : BaseFragment<FgSplashBinding>(),ISplashFragmentView {
     }
 
     override fun toMain() {
-
+        mActivity?.finish()
+        var intent = Intent(context,HomeActivity::class.java)
+        startActivity(intent)
     }
 }

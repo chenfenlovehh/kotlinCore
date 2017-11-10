@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jinghan.core.R
-import com.jinghan.core.databinding.FrgGuideViewBinding
+import com.jinghan.core.databinding.FgGuideViewBinding
 
 /**
  * @author liuzeren
@@ -24,7 +24,7 @@ class GuideAdapter(context: Context, resDraws: Array<Int>,var itemClick:View.OnC
 
             val resDraw = resDraws[index]
 
-            val binding = DataBindingUtil.inflate<FrgGuideViewBinding>(LayoutInflater.from(context), R.layout.frg_guide_view, null, false)
+            val binding = DataBindingUtil.inflate<FgGuideViewBinding>(LayoutInflater.from(context), R.layout.fg_guide_view, null, false)
             binding.bg = resDraw
             binding.visible = index == resDraws.size - 1
 

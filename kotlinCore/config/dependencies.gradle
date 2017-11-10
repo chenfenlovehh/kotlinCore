@@ -20,6 +20,7 @@ ext{
     logVersion = '2.1.1'
 
     stethoVersion = '1.5.0'
+    leakcanaryVersion = '1.5'
 
     dependencies = [
 
@@ -71,5 +72,8 @@ ext{
             stethoOkHttp            : "com.facebook.stetho:stetho-okhttp3:$stethoVersion",
 
             multidex                : "com.android.support:multidex:1.0.1",
+
+            leakcanaryAndroid       : "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion",
+            leakcanaryAndroidNoOp   : "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion",
     ]
 }

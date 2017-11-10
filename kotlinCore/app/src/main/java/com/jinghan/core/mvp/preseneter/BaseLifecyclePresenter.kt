@@ -7,8 +7,12 @@ import io.reactivex.subjects.BehaviorSubject
  * @time 2017/11/9    上午11:27
  * @mail lzr319@163.com
  */
-interface BaseLifecyclePresenter<T,V> : BasePresenter<T> {
+abstract class BaseLifecyclePresenter<T,V> : BasePresenter<T> {
 
-    fun lifecycle(lifecycleSubject:BehaviorSubject<V>)
+    protected lateinit var lifecycleSubject: BehaviorSubject<V>
+
+    fun lifecycle(lifecycleSubject:BehaviorSubject<V>){
+        this.lifecycleSubject = lifecycleSubject
+    }
 
 }

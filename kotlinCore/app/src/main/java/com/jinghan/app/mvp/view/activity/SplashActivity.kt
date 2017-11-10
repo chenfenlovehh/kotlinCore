@@ -34,11 +34,10 @@ class SplashActivity(override val layoutId: Int = R.layout.aty_splash) : BaseAct
     @Permission(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,isCallback = false)
     override fun initViewsAndListener() {
         hideStatusBar(true)
-
     }
 
     override fun initData() {
-        applyFragment(true)
+        applyFragment(presenter.isFirst)
     }
 
     override fun initPresenter() {

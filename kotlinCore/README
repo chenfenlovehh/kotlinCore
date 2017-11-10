@@ -13,3 +13,6 @@ AOPPLUGIN
     -p <password>： keystore的密码
     -a <alias>： keystore 用户别名
     -e <alias password>： keystore 用户别名密码
+
+deeplink路由相关
+https://github.com/airbnb/DeepLinkDispatch

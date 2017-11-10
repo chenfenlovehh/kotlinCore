@@ -14,6 +14,11 @@ object Constant{
     const val APP_NAME = "kotlin"
 
     /**
+     * app scheme
+     * */
+    const val APP_SCHEME = "${APP_NAME}://"
+
+    /**
      * 应用输出根路径
      */
     val ROOT_PAHT = "${Environment.getExternalStorageDirectory().path}${File.separator}$APP_NAME${File.separator}"

@@ -47,11 +47,5 @@
                 android:text="@string/skip_progress"
                 tool:text="跳过"/>
         </FrameLayout>
-
-        <Button
-            android:id="@+id/btnRetry"
-            android:text="retry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </RelativeLayout>
 </layout>

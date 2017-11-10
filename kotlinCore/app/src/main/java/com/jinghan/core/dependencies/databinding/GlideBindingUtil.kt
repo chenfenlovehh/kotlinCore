@@ -39,7 +39,7 @@ object GlideBindingUtil {
      * @param imageType 图片加载方式,默认为0
      * *
      */
-    fun loadImage(imgView: ImageView,
+    @JvmStatic fun loadImage(imgView: ImageView,
                   url: String,
                   imageType: Int,
                   borderWidth: Int,
@@ -64,7 +64,7 @@ object GlideBindingUtil {
     }
 
     @BindingAdapter(value = *arrayOf("imageUrl", "error", "placeholder", "radius"), requireAll = true)
-    fun loadImage(imgView: ImageView,
+    @JvmStatic fun loadImage(imgView: ImageView,
                   url: String,
                   radius: Int,
                   error: Drawable,
@@ -73,14 +73,14 @@ object GlideBindingUtil {
     }
 
     @BindingAdapter(value = *arrayOf("imageUrl", "radius"), requireAll = true)
-    fun loadImage(imgView: ImageView,
+    @JvmStatic fun loadImage(imgView: ImageView,
                   url: String,
                   radius: Int) {
         loadImage(imgView, url, radius, 0, 0, radius, null, null)
     }
 
     @BindingAdapter(value = *arrayOf("imageUrl", "error", "placeholder"), requireAll = false)
-    fun loadImage(imgView: ImageView,
+    @JvmStatic fun loadImage(imgView: ImageView,
                   url: String,
                   error: Drawable,
                   placeholder: Drawable) {
@@ -89,7 +89,7 @@ object GlideBindingUtil {
     }
 
     @BindingAdapter(value = *arrayOf("imageUrl", "borderWidth", "borderColor", "error", "placeholder"), requireAll = true)
-    fun loadImage(imgView: ImageView,
+    @JvmStatic fun loadImage(imgView: ImageView,
                   url: String,
                   borderWidth: Int,
                   borderColor: Int,
@@ -99,13 +99,13 @@ object GlideBindingUtil {
     }
 
     @BindingAdapter(value = *arrayOf("res"))
-    fun loadImage(imgView: ImageView,
+    @JvmStatic fun loadImage(imgView: ImageView,
                   res: Drawable) {
         imgView.setImageDrawable(res)
     }
 
     @BindingAdapter(value = *arrayOf("imageUrl", "borderWidth", "borderColor"), requireAll = true)
-    fun loadImage(imgView: ImageView,
+    @JvmStatic fun loadImage(imgView: ImageView,
                   url: String,
                   borderWidth: Int,
                   borderColor: Int) {

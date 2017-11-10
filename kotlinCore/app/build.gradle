@@ -156,9 +156,9 @@ dependencies {
     kapt 'com.airbnb:deeplinkdispatch-processor:2.0.1'
 
     /*内存泄漏工具*/
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    debugImplementation dep.leakcanaryAndroid
+    releaseImplementation dep.leakcanaryAndroidNoOp
+    testImplementation dep.leakcanaryAndroidNoOp
 
 }
 

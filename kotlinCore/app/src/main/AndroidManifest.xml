@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.jinghan.app.mvp.view.activity.HomeActivity"/>
+        <activity android:name="com.jinghan.app.mvp.view.activity.HomeActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask"/>
 
         <!--glide 配置信息 start-->
 
@@ -37,6 +39,20 @@
 
         <!--glide 配置信息 end-->
 
+        <!-- deeplink 配置 start -->
+        <activity
+            android:name="com.airbnb.deeplinkdispatch.DeepLinkActivity"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="kotlinapp" />
+            </intent-filter>
+        </activity>
+        <!-- deeplink 配置 end -->
 
     </application>
 </manifest>

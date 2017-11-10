@@ -12,12 +12,10 @@ import com.jinghan.app.mvp.view.impl.api.SplashService
 import com.jinghan.app.mvp.view.impl.view.ISplashFragmentView
 import com.jinghan.core.dependencies.http.OkHttp
 import com.jinghan.core.mvp.widget.CircleProgressBar
-import com.trello.rxlifecycle2.android.FragmentEvent
 import com.trello.rxlifecycle2.android.RxLifecycleAndroid
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DefaultObserver
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -37,13 +35,12 @@ import java.util.concurrent.TimeUnit
  * @time 2017/11/9    上午11:04
  * @mail lzr319@163.com
  */
-class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplashFragmentPresenter  {
+class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplashFragmentPresenter() {
 
     @Inject
     protected lateinit var mOkHttp:OkHttp
 
     private var mISplashFragmentView : ISplashFragmentView? = null
-    private lateinit var lifecycleSubject: BehaviorSubject<FragmentEvent>
 
     override fun reqSplashInfo() {
         val request = BaseRequest<BaseUserRequestData>("loadingPageProvider","queryLoadingPageInfo",data = BaseUserRequestData())
@@ -137,9 +134,5 @@ class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplash
 
     override fun dropView() {
         mISplashFragmentView = null
-    }
-
-    override fun lifecycle(lifecycleSubject: BehaviorSubject<FragmentEvent>) {
-        this.lifecycleSubject = lifecycleSubject
     }
 }

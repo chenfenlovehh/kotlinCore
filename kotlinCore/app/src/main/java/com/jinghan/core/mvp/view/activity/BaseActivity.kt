@@ -30,7 +30,7 @@ import io.reactivex.subjects.BehaviorSubject
  */
 abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity(),LifecycleProvider<ActivityEvent>,BaseView{
 
-    private val lifecycleSubject = BehaviorSubject.create<ActivityEvent>()
+    protected val lifecycleSubject = BehaviorSubject.create<ActivityEvent>()
     protected lateinit var mViewBinding:B
 
     @CallSuper

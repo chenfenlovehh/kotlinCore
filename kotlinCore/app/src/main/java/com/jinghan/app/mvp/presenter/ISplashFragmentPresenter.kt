@@ -13,10 +13,10 @@ import com.trello.rxlifecycle2.android.FragmentEvent
  * @time 2017/11/9    上午11:03
  * @mail lzr319@163.com
  */
-interface ISplashFragmentPresenter : BaseLifecyclePresenter<ISplashFragmentView,FragmentEvent>{
+abstract class ISplashFragmentPresenter : BaseLifecyclePresenter<ISplashFragmentView, FragmentEvent>() {
 
-    fun reqSplashInfo()
+    abstract fun reqSplashInfo()
 
-    fun interval(viewGroup: ViewGroup, viewProgress: ViewGroup, pbCircle: CircleProgressBar, tvProgress: TextView, splashInfo: SplashInfo?)
+    abstract fun interval(viewGroup: ViewGroup, viewProgress: ViewGroup, pbCircle: CircleProgressBar, tvProgress: TextView, splashInfo: SplashInfo?)
 
 }
