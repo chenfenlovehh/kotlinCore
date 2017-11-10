@@ -37,11 +37,6 @@ import java.util.concurrent.TimeUnit
  */
 class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplashFragmentPresenter() {
 
-    @Inject
-    protected lateinit var mOkHttp:OkHttp
-
-    private var mISplashFragmentView : ISplashFragmentView? = null
-
     override fun reqSplashInfo() {
         val request = BaseRequest<BaseUserRequestData>("loadingPageProvider","queryLoadingPageInfo",data = BaseUserRequestData())
 
@@ -59,18 +54,18 @@ class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplash
             }
 
             override fun onError(@io.reactivex.annotations.NonNull e: Throwable) {
-                mISplashFragmentView?.updateSplash(splashInfo)
+                mView?.updateSplash(splashInfo)
             }
 
             override fun onComplete() {
-                mISplashFragmentView?.updateSplash(splashInfo)
+                mView?.updateSplash(splashInfo)
             }
         })
     }
 
     override fun interval(viewGroup: ViewGroup, viewProgress: ViewGroup, pbCircle: CircleProgressBar, tvProgress: TextView, splashInfo: SplashInfo?) {
         if (null == splashInfo) {
-            mISplashFragmentView?.toMain()
+            mView?.toMain()
             return
         }
 
@@ -92,7 +87,7 @@ class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplash
                         init {
                             viewProgress.setOnClickListener {
                                 cancel()
-                                mISplashFragmentView?.toMain()
+                                mView?.toMain()
                             }
                         }
 
@@ -103,11 +98,11 @@ class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplash
 
                         override fun onError(@io.reactivex.annotations.NonNull e: Throwable) {
                             //理论上是不会发生这一错误的
-                            mISplashFragmentView?.toMain()
+                            mView?.toMain()
                         }
 
                         override fun onComplete() {
-                            mISplashFragmentView?.toMain()
+                            mView?.toMain()
                         }
                     }
                     viewProgress.visibility = View.VISIBLE
@@ -120,19 +115,11 @@ class SplashFragmentPresenter @Inject constructor(val context:Context) : ISplash
                 override fun onLoadFailed(e: Exception?, errorDrawable: Drawable?) {
                     super.onLoadFailed(e, errorDrawable)
 
-                    mISplashFragmentView?.toMain()
+                    mView?.toMain()
                 }
             })
         } else {
-            mISplashFragmentView?.toMain()
+            mView?.toMain()
         }
-    }
-
-    override fun takeView(view: ISplashFragmentView) {
-        this.mISplashFragmentView = view
-    }
-
-    override fun dropView() {
-        mISplashFragmentView = null
     }
 }

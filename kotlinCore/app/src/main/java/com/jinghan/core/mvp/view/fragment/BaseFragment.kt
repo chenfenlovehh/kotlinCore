@@ -151,14 +151,11 @@ abstract class BaseFragment<B:ViewDataBinding> : DaggerFragment(), LifecycleProv
     }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun error(listener: View.OnClickListener) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
